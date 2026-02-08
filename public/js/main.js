@@ -7,6 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Particle Background ----
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
+
+    const PARTICLE_CONFIG = {
+        COUNT: {
+            MAX: 80,
+            DENSITY_DIVISOR: 15000
+        },
+        SIZE: {
+            BASE: 0.5,
+            VARIATION: 2
+        },
+        SPEED: {
+            FACTOR: 0.4
+        },
+        OPACITY: {
+            BASE: 0.1,
+            VARIATION: 0.4,
+            LIGHT_THEME_MULTIPLIER: 0.5
+        },
+        CONNECTION: {
+            DISTANCE: 150,
+            OPACITY_BASE: 0.15,
+            LIGHT_THEME_OPACITY_MULTIPLIER: 0.4,
+            LINE_WIDTH: 0.5
+        }
+    };
+
     let particles = [];
     let animFrame;
 
@@ -23,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.4;
-            this.speedY = (Math.random() - 0.5) * 0.4;
-            this.opacity = Math.random() * 0.4 + 0.1;
+            this.size = Math.random() * PARTICLE_CONFIG.SIZE.VARIATION + PARTICLE_CONFIG.SIZE.BASE;
+            this.speedX = (Math.random() - 0.5) * PARTICLE_CONFIG.SPEED.FACTOR;
+            this.speedY = (Math.random() - 0.5) * PARTICLE_CONFIG.SPEED.FACTOR;
+            this.opacity = Math.random() * PARTICLE_CONFIG.OPACITY.VARIATION + PARTICLE_CONFIG.OPACITY.BASE;
         }
 
         update() {
@@ -39,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         draw() {
             const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-            const color = isDark ? `rgba(0, 212, 255, ${this.opacity})` : `rgba(100, 100, 180, ${this.opacity * 0.5})`;
+            const color = isDark
+                ? `rgba(0, 212, 255, ${this.opacity})`
+                : `rgba(100, 100, 180, ${this.opacity * PARTICLE_CONFIG.OPACITY.LIGHT_THEME_MULTIPLIER})`;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fillStyle = color;
@@ -48,7 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initParticles() {
-        const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+        const count = Math.min(
+            PARTICLE_CONFIG.COUNT.MAX,
+            Math.floor((canvas.width * canvas.height) / PARTICLE_CONFIG.COUNT.DENSITY_DIVISOR)
+        );
         particles = [];
         for (let i = 0; i < count; i++) {
             particles.push(new Particle());
@@ -62,14 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
-                    const opacity = (1 - dist / 150) * 0.15;
-                    const color = isDark ? `rgba(0, 212, 255, ${opacity})` : `rgba(100, 100, 180, ${opacity * 0.4})`;
+                if (dist < PARTICLE_CONFIG.CONNECTION.DISTANCE) {
+                    const opacity = (1 - dist / PARTICLE_CONFIG.CONNECTION.DISTANCE) * PARTICLE_CONFIG.CONNECTION.OPACITY_BASE;
+                    const color = isDark
+                        ? `rgba(0, 212, 255, ${opacity})`
+                        : `rgba(100, 100, 180, ${opacity * PARTICLE_CONFIG.CONNECTION.LIGHT_THEME_OPACITY_MULTIPLIER})`;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
                     ctx.strokeStyle = color;
-                    ctx.lineWidth = 0.5;
+                    ctx.lineWidth = PARTICLE_CONFIG.CONNECTION.LINE_WIDTH;
                     ctx.stroke();
                 }
             }
