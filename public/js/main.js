@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let particles = [];
     let animFrame;
     let isPageVisible = true;
+    let isDarkTheme = document.documentElement.getAttribute('data-theme') !== 'light';
 
     function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 
@@ -24,10 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
         }
         draw() {
-            const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
             const alpha = Math.max(0, this.currentOpacity || this.opacity);
             ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = isDark ? `rgba(0, 212, 255, ${alpha})` : `rgba(100, 100, 180, ${alpha * 0.4})`;
+            ctx.fillStyle = isDarkTheme ? `rgba(0, 212, 255, ${alpha})` : `rgba(100, 100, 180, ${alpha * 0.4})`;
             ctx.fill();
         }
     }
@@ -38,15 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function drawLines() {
-        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+        const threshold = 140;
+        const thresholdSq = threshold * threshold;
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 140) {
-                    const opacity = (1 - dist / 140) * 0.1;
+                const distSq = dx * dx + dy * dy;
+                if (distSq < thresholdSq) {
+                    const dist = Math.sqrt(distSq);
+                    const opacity = (1 - dist / threshold) * 0.1;
                     ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = isDark ? `rgba(0, 212, 255, ${opacity})` : `rgba(100, 100, 180, ${opacity * 0.3})`;
+                    ctx.strokeStyle = isDarkTheme ? `rgba(0, 212, 255, ${opacity})` : `rgba(100, 100, 180, ${opacity * 0.3})`;
                     ctx.lineWidth = 0.5; ctx.stroke();
                 }
             }
@@ -107,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateThemeColor(theme) {
         const meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0a0f' : '#f2f2f7');
+        isDarkTheme = theme === 'dark';
     }
     updateThemeColor(savedTheme);
     themeToggle.addEventListener('click', () => {

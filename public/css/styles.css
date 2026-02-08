@@ -20,10 +20,14 @@
   --glass-chamfer-top: rgba(255, 255, 255, 0.4);
   --glass-chamfer-bottom: rgba(0, 0, 0, 0.5);
   --text-primary: #ebebf5;
-  --text-secondary: rgba(235, 235, 245, 0.6);
-  --text-muted: rgba(235, 235, 245, 0.3);
+  --text-secondary: rgba(235, 235, 245, 0.8);
+  --text-muted: rgba(235, 235, 245, 0.6);
+  --text-on-accent: #ffffff;
+  --color-success: #22c55e;
   --accent-cyan: #00d4ff;
+  --accent-cyan-text: #00d4ff;
   --accent-purple: #a855f7;
+  --accent-purple-text: #a855f7;
   --accent-pink: #ec4899;
   --accent-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
   --accent-gradient-hover: linear-gradient(135deg, #33ddff, #b96ef8);
@@ -63,8 +67,12 @@
   --glass-chamfer-bottom: rgba(0, 0, 0, 0.1);
   --glass-noise-opacity: 0.02;
   --text-primary: #1a1a2e;
-  --text-secondary: rgba(26, 26, 46, 0.55);
-  --text-muted: rgba(26, 26, 46, 0.3);
+  --text-secondary: rgba(26, 26, 46, 0.85);
+  --text-muted: rgba(26, 26, 46, 0.7);
+  --accent-cyan-text: #005c8f;
+  --accent-purple-text: #7c3aed;
+  --accent-gradient: linear-gradient(135deg, var(--accent-cyan-text), var(--accent-purple-text));
+  --accent-conic: conic-gradient(from 180deg at 50% 50%, var(--accent-cyan-text) 0deg, var(--accent-purple-text) 120deg, var(--accent-pink) 240deg, var(--accent-cyan-text) 360deg);
   --accent-glow: rgba(0, 212, 255, 0.1);
   --accent-glow-strong: rgba(0, 212, 255, 0.18);
   --accent-glow-purple: rgba(168, 85, 247, 0.1);
@@ -79,6 +87,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 html {
@@ -347,7 +360,7 @@ body::before {
   border: 1px solid var(--glass-border-subtle);
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--accent-cyan);
+  color: var(--accent-cyan-text);
   margin-bottom: 32px;
   animation: fadeInDown 0.8s var(--ease-out-expo) forwards;
   box-shadow: var(--glass-inner-glow);
@@ -356,7 +369,7 @@ body::before {
 .badge-dot {
   width: 8px;
   height: 8px;
-  background: #22c55e;
+  background: var(--color-success);
   border-radius: 50%;
   animation: pulse 2s infinite;
   box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
@@ -456,7 +469,7 @@ body::before {
 .btn-primary {
   background: var(--accent-conic);
   background-size: 200% 200%;
-  color: #fff;
+  color: var(--text-on-accent);
   box-shadow: 0 4px 24px var(--accent-glow), var(--glass-inner-glow);
   animation: meshShift 6s ease infinite;
 }
@@ -569,7 +582,7 @@ body::before {
 .section-tag {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--accent-cyan);
+  color: var(--accent-cyan-text);
   margin-bottom: 12px;
   display: block;
   letter-spacing: 0.05em;
@@ -709,7 +722,7 @@ body::before {
   content: '\25B8';
   position: absolute;
   left: 0;
-  color: var(--accent-cyan);
+  color: var(--accent-cyan-text);
   font-weight: 700;
 }
 
@@ -756,7 +769,7 @@ body::before {
 
 .skill-tag:hover {
   border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
+  color: var(--accent-cyan-text);
   background: var(--accent-glow);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15), var(--glass-inner-glow);
@@ -880,14 +893,14 @@ body::before {
   justify-content: center;
   border-radius: 16px;
   background: var(--accent-glow);
-  color: var(--accent-cyan);
+  color: var(--accent-cyan-text);
   box-shadow: var(--glass-inner-glow);
   transition: all var(--transition-smooth);
 }
 
 .cert-card:hover .cert-logo {
   background: var(--accent-conic);
-  color: #fff;
+  color: var(--text-on-accent);
   transform: scale(1.1) rotate(5deg);
   box-shadow: 0 8px 24px var(--accent-glow-strong);
 }
@@ -930,7 +943,7 @@ body::before {
   justify-content: center;
   border-radius: 14px;
   background: var(--accent-glow);
-  color: var(--accent-cyan);
+  color: var(--accent-cyan-text);
   margin-bottom: 12px;
   transition: all var(--transition-smooth);
   box-shadow: var(--glass-inner-glow);
@@ -938,7 +951,7 @@ body::before {
 
 .contact-card:hover .contact-icon {
   background: var(--accent-conic);
-  color: #fff;
+  color: var(--text-on-accent);
   transform: scale(1.1);
   box-shadow: 0 8px 24px var(--accent-glow-strong);
 }
@@ -1079,6 +1092,11 @@ body::before {
   .skill-tag {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  .navbar.scrolled {
+    backdrop-filter: var(--glass-blur-mobile);
+    -webkit-backdrop-filter: var(--glass-blur-mobile);
   }
 
   .nav-links {
