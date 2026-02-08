@@ -1,0 +1,6 @@
+Navigating to http://localhost:8080
+Status: 200
+CSP Header found: default-src 'self';script-src 'self';style-src 'self' https://fonts.googleapis.com;font-src 'self' https://fonts.gstatic.com;img-src 'self' data:;object-src 'none';upgrade-insecure-requests;base-uri 'self';form-action 'self';frame-ancestors 'self';script-src-attr 'none'
+CSP allows Google Fonts.
+No CSP violations found in console.
+Screenshot saved to verification/verification.png
