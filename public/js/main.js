@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
-    let animFrame;
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -83,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             p.draw();
         });
         drawLines();
-        animFrame = requestAnimationFrame(animateParticles);
+        requestAnimationFrame(animateParticles);
     }
 
     resizeCanvas();
