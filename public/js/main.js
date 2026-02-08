@@ -98,16 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Navbar Scroll Effect ----
     const navbar = document.getElementById('navbar');
     let lastScroll = 0;
+    let ticking = false;
 
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+                ticking = false;
+            });
+            ticking = true;
         }
-        lastScroll = currentScroll;
-    });
+    }, { passive: true });
 
     // ---- Hamburger Menu ----
     const hamburger = document.getElementById('hamburger');
