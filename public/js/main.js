@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
+    // Cache theme state to avoid repeated DOM access in animation loop
+    let isDark = document.documentElement.getAttribute('data-theme') !== 'light';
     let animFrame;
 
     function resizeCanvas() {
@@ -38,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw() {
-            const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
             const color = isDark ? `rgba(0, 212, 255, ${this.opacity})` : `rgba(100, 100, 180, ${this.opacity * 0.5})`;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -56,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function drawLines() {
-        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
@@ -153,11 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
+    isDark = savedTheme !== 'light';
 
     themeToggle.addEventListener('click', () => {
         const current = document.documentElement.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
+        isDark = next !== 'light';
         localStorage.setItem('theme', next);
     });
 
