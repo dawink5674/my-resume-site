@@ -4,6 +4,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Utility: Debounce function to limit rate of execution
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
     // ---- Particle Background ----
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
@@ -90,10 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticles();
     animateParticles();
 
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', debounce(() => {
         resizeCanvas();
         initParticles();
-    });
+    }, 250));
 
     // ---- Navbar Scroll Effect ----
     const navbar = document.getElementById('navbar');
