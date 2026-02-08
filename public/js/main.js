@@ -125,11 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animateParticles() {
+        if (document.hidden) return;
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         particles.forEach(p => { p.update(); p.draw(); });
         drawLines();
         animFrame = requestAnimationFrame(animateParticles);
     }
+
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            animateParticles();
+        }
+    });
 
     initParticles();
     animateParticles();
@@ -187,12 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ---- Scroll Reveal ----
-    const revealElements = document.querySelectorAll('.section, .glass-card, .timeline-item');
+    const revealElements = document.querySelectorAll('.reveal');
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
+                entry.target.classList.add('visible');
             }
         });
     }, { threshold: 0.1 });
@@ -206,7 +214,81 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Update focus for accessibility
+                target.setAttribute('tabindex', '-1');
+                target.focus();
             }
         });
     });
+
+    // ---- Scroll Spy (Active Nav Link) ----
+    const spySections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-link');
+
+    const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(link => {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -60% 0px' }); // Trigger when section is near top
+
+    spySections.forEach(section => spyObserver.observe(section));
+
+    // ---- Contact Form ----
+    const contactForm = document.getElementById('contactForm');
+    const formFeedback = document.getElementById('formFeedback');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
+            // Reset feedback
+            formFeedback.className = 'form-feedback';
+            formFeedback.textContent = '';
+
+            // Client-side validation (already handled by 'required' attribute, but we can double check)
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    formFeedback.textContent = 'Message sent successfully!';
+                    formFeedback.classList.add('success', 'show');
+                    contactForm.reset();
+                } else {
+                    throw new Error(result.error || 'Failed to send message.');
+                }
+            } catch (error) {
+                formFeedback.textContent = error.message;
+                formFeedback.classList.add('error', 'show');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        });
+    }
 });
