@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let particles = [];
     // Cache theme state to avoid repeated DOM access in animation loop
     let isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-    let animFrame;
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -130,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         particles.forEach(p => { p.update(); p.draw(); });
         drawLines();
-        animFrame = requestAnimationFrame(animateParticles);
+        requestAnimationFrame(animateParticles);
     }
 
     document.addEventListener('visibilitychange', () => {
@@ -150,16 +149,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Navbar Scroll Effect ----
     const navbar = document.getElementById('navbar');
     let lastScroll = 0;
+    let ticking = false;
 
     window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScroll = window.scrollY;
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+                ticking = false;
+            });
+            ticking = true;
         }
-        lastScroll = currentScroll;
-    });
+    }, { passive: true });
 
     // ---- Hamburger Menu ----
     const hamburger = document.getElementById('hamburger');
