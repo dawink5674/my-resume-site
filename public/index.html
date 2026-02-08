@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nolan Blenniss | Cybersecurity Professional</title>
+  <meta name="description" content="Nolan Blenniss — Cybersecurity professional and Transport Network Engineer with expertise in network security, DWDM technologies, and threat research.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Particle Canvas Background -->
+  <canvas id="particles"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-bracket">&lt;</span>NB<span class="brand-bracket">/&gt;</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#certifications" class="nav-link">Certifications</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Active Secret Clearance
+      </div>
+      <h1 class="hero-name">
+        <span class="line">Nolan</span>
+        <span class="line gradient-text">Blenniss</span>
+      </h1>
+      <p class="hero-title">Cybersecurity Professional & Transport Network Engineer</p>
+      <p class="hero-summary">
+        Network security specialist with hands-on experience supporting DISA transport networks 
+        and developing cybersecurity curriculum for US Army initiatives. Proficient in Python, Linux, 
+        and DWDM technologies.
+      </p>
+      <div class="hero-actions">
+        <a href="assets/resume.pdf" download class="btn btn-primary" id="downloadBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">3.8</span>
+          <span class="stat-label">GPA</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">3</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">Secret</span>
+          <span class="stat-label">Clearance</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">01 / About</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card glass-card">
+          <div class="about-icon">🛡️</div>
+          <h3>Cybersecurity</h3>
+          <p>Threat analysis, cryptography, database security, network forensics, and NIST framework implementation.</p>
+        </div>
+        <div class="about-card glass-card">
+          <div class="about-icon">🌐</div>
+          <h3>Networking</h3>
+          <p>DWDM technologies, Ciena 6500 platform, fiber optic networking, routing & switching, TCP/IP, and VPN.</p>
+        </div>
+        <div class="about-card glass-card">
+          <div class="about-icon">💻</div>
+          <h3>Development</h3>
+          <p>Python automation, Bash scripting, SQL, Java, and C programming with a focus on secure solutions.</p>
+        </div>
+        <div class="about-card glass-card">
+          <div class="about-icon">🎖️</div>
+          <h3>Leadership</h3>
+          <p>Eagle Scout, Cyber Defense Team Liaison, cross-functional collaboration, and technical documentation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">02 / Experience</span>
+        <h2 class="section-title">Where I've Worked</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item glass-card">
+          <div class="timeline-marker"></div>
+          <div class="timeline-date">
+            <span class="date-range">May 2025 — Present</span>
+            <span class="date-badge current">Current</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Transport Network Engineer Intern</h3>
+            <p class="company">Leidos — Scott AFB, IL</p>
+            <p class="contract-badge">GSMO-II Contract • Defense Information Systems Agency (DISA)</p>
+            <ul class="timeline-bullets">
+              <li>Support the Global Solutions Management - Operations II (GSMO-II) contract for the Defense Information Systems Agency (DISA)</li>
+              <li>Ensure the operational integrity of critical communication infrastructures through proactive network monitoring and troubleshooting</li>
+              <li>Gain hands-on expertise with DWDM technologies and the Ciena 6500 platform to maintain high-availability transport layers</li>
+              <li>Collaborate with senior engineers to resolve complex transport layer issues, directly enhancing overall network reliability for Department of Defense (DoD) assets</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item glass-card">
+          <div class="timeline-marker"></div>
+          <div class="timeline-date">
+            <span class="date-range">Apr 2024 — Jun 2024</span>
+          </div>
+          <div class="timeline-content">
+            <h3>VIVID Research Assistant — Cybersecurity Internship</h3>
+            <p class="company">University of Alabama, Huntsville, AL</p>
+            <ul class="timeline-bullets">
+              <li>Conducted specialized cybersecurity research for local government agencies and the University of Alabama in Huntsville</li>
+              <li>Engineered and secured a new cybersecurity curriculum adopted by US Army and Army JROTC schools nationwide</li>
+              <li>Implemented security frameworks and utilized Linux-based virtual environments to simulate and defend against various cyber threats</li>
+              <li>Optimized research workflows by automating data collection tasks using Python and Bash scripts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">03 / Skills</span>
+        <h2 class="section-title">Technical Arsenal</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category glass-card">
+          <h3 class="skill-category-title">
+            <span class="skill-icon">🌐</span>
+            Networking
+          </h3>
+          <div class="skill-tags">
+            <span class="skill-tag">DWDM Technologies</span>
+            <span class="skill-tag">Ciena 6500</span>
+            <span class="skill-tag">Fiber Optic</span>
+            <span class="skill-tag">Routing & Switching</span>
+            <span class="skill-tag">TCP/IP</span>
+            <span class="skill-tag">VPN</span>
+          </div>
+        </div>
+        <div class="skill-category glass-card">
+          <h3 class="skill-category-title">
+            <span class="skill-icon">🔒</span>
+            Cybersecurity
+          </h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Threat Analysis</span>
+            <span class="skill-tag">Cryptography</span>
+            <span class="skill-tag">Database Security</span>
+            <span class="skill-tag">Network Forensics</span>
+            <span class="skill-tag">NIST Framework</span>
+          </div>
+        </div>
+        <div class="skill-category glass-card">
+          <h3 class="skill-category-title">
+            <span class="skill-icon">🛠️</span>
+            Tools
+          </h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">Nmap</span>
+            <span class="skill-tag">Linux CLI</span>
+            <span class="skill-tag">RHEL / Ubuntu</span>
+            <span class="skill-tag">VirtualBox</span>
+            <span class="skill-tag">VMware</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-category glass-card">
+          <h3 class="skill-category-title">
+            <span class="skill-icon">⌨️</span>
+            Programming
+          </h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">04 / Education</span>
+        <h2 class="section-title">Academic Background</h2>
+      </div>
+      <div class="education-card glass-card">
+        <div class="edu-header">
+          <div>
+            <h3>Bachelor of Science in Cybersecurity</h3>
+            <p class="edu-school">Southeast Missouri State University, Cape Girardeau, MO</p>
+          </div>
+          <div class="edu-meta">
+            <span class="edu-date">Aug 2022 — May 2026</span>
+            <span class="edu-gpa">3.8 / 4.0 GPA</span>
+          </div>
+        </div>
+        <div class="edu-details">
+          <div class="edu-section">
+            <h4>Relevant Coursework</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Network Security</span>
+              <span class="skill-tag">Computer Forensics</span>
+              <span class="skill-tag">Database Security</span>
+              <span class="skill-tag">Cryptography</span>
+              <span class="skill-tag">Intro to Cyber Operations</span>
+              <span class="skill-tag">C Programming & Linux</span>
+            </div>
+          </div>
+          <div class="edu-section">
+            <h4>Cyber Defense Team — Liaison</h4>
+            <p>Appointed to develop and implement strict security policies to safeguard team data and competitive infrastructure.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Honors -->
+      <div class="honors-grid">
+        <div class="honor-card glass-card">
+          <div class="honor-icon">🏆</div>
+          <h4>Dean's List</h4>
+          <p>Southeast Missouri State University — Recognized for academic excellence and maintaining a 3.8/4.0 GPA</p>
+        </div>
+        <div class="honor-card glass-card">
+          <div class="honor-icon">⚜️</div>
+          <h4>Eagle Scout</h4>
+          <p>Boy Scouts of America — Highest rank achieved, demonstrating lifelong commitment to leadership and service</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">05 / Certifications</span>
+        <h2 class="section-title">Credentials</h2>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card glass-card">
+          <div class="cert-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h4>CompTIA Security+</h4>
+          <p class="cert-detail">SY0-701</p>
+        </div>
+        <div class="cert-card glass-card">
+          <div class="cert-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M6 8h.01M10 8h.01"/></svg>
+          </div>
+          <h4>Cisco CCNA</h4>
+          <p class="cert-detail">Routing & Switching Essentials</p>
+        </div>
+        <div class="cert-card glass-card">
+          <div class="cert-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+          </div>
+          <h4>Google Cybersecurity</h4>
+          <p class="cert-detail">Professional Certificate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">06 / Contact</span>
+        <h2 class="section-title">Let's Connect</h2>
+      </div>
+      <div class="contact-grid">
+        <a href="mailto:nolan.blenniss@gmail.com" class="contact-card glass-card" id="contactEmail">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">nolan.blenniss@gmail.com</span>
+        </a>
+        <a href="tel:847-372-2577" class="contact-card glass-card" id="contactPhone">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">847-372-2577</span>
+        </a>
+        <a href="https://www.linkedin.com/in/nolanblenniss" target="_blank" rel="noopener" class="contact-card glass-card" id="contactLinkedIn">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">nolanblenniss</span>
+        </a>
+        <a href="https://github.com/dawink5674" target="_blank" rel="noopener" class="contact-card glass-card" id="contactGitHub">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">dawink5674</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Nolan Blenniss. Built with purpose.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
