@@ -61,8 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
+                const distSq = dx * dx + dy * dy;
+                if (distSq < 22500) {
+                    const dist = Math.sqrt(distSq);
                     const opacity = (1 - dist / 150) * 0.15;
                     const color = isDark ? `rgba(0, 212, 255, ${opacity})` : `rgba(100, 100, 180, ${opacity * 0.4})`;
                     ctx.beginPath();
